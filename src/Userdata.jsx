@@ -13,20 +13,21 @@ import { Link } from "react-router-dom";
 
 export default function Userdata() {
   const [userdata, setUserdata] = useState(null);
-
+  
+    
   useEffect(() => {
     fetch("http://localhost:5000/user").then((result) => {
-      return result
-        .json()
-        .then((resp) => {
-          console.log(resp);
-          setUserdata(resp);
-        })
-        .catch((error) => {
-          console.log(error.msg);
-        });
+      return result.json().then((resp) => {
+        console.log(resp);
+        setUserdata(resp);
+      });
+      // .catch((error) => {
+      //   console.log(error.msg);
+      // });
     });
   }, []);
+
+
   return (
     <>
       <h1>User data</h1>
@@ -44,22 +45,22 @@ export default function Userdata() {
           <tr>
             <td>
               <Link to="/useradd">
-                <button>ADD USER</button>
+                <button className=' p-2 bg-primary bg-gradient rounded-6 mx-2'>ADD USER</button>
               </Link>
             </td>
           </tr>
           {userdata &&
-            userdata.map((item) => (
+            userdata.map((item,index) => (
               <tr>
-                <td>{item.id}</td>
+                <td>{index + 1}</td>
                 <td>{item.name}</td>
                 <td>{item.email}</td>
                 <td>{item.password}</td>
                 <td>
                   <div className="btn-api">
-                    <button>Edit</button>
-                    <button>Remove</button>
-                    <button>Delete</button>
+                    <button className=' p-2 bg-secondary bg-gradient rounded-6 mx-2'>Edit</button>
+                    <button  className=' p-2 bg-warning bg-gradient rounded-6 mx-2'>Remove</button>
+                    <button  className=' p-2 bg-danger bg-gradient rounded-6 mx-2' >Delete</button>
                   </div>
                 </td>
               </tr>
