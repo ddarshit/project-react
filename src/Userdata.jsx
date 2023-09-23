@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 export default function Userdata() {
   const [userdata, setUserdata] = useState(null);
-  
+
     
   useEffect(() => {
     fetch("http://localhost:5000/user").then((result) => {
@@ -27,6 +27,7 @@ export default function Userdata() {
     });
   }, []);
 
+  
 
   return (
     <>
@@ -60,7 +61,7 @@ export default function Userdata() {
                   <div className="btn-api">
                     <button className=' p-2 bg-secondary bg-gradient rounded-6 mx-2'>Edit</button>
                     <button  className=' p-2 bg-warning bg-gradient rounded-6 mx-2'>Remove</button>
-                    <button  className=' p-2 bg-danger bg-gradient rounded-6 mx-2' >Delete</button>
+                    <button  className=' p-2 bg-danger bg-gradient rounded-6 mx-2'>Delete</button>
                   </div>
                 </td>
               </tr>
