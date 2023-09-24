@@ -10,36 +10,55 @@ import {
 import { useNavigate } from "react-router-dom";
 
 function Useradd() {
-  const [id, setId] = useState(1);
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [errorname, setErrorname] = useState("");
+  const [erroremail, setErroremail] = useState("");
+  const [errorpassword, setErrorpassword] = useState("");
 
-  function handlesubmit() {
-    // event.preventDefault();
-    // let temp = localStorage.getItem("id");
-    let data = { name, email, password };
-    // console.log(id ,name,email,password)
-    fetch("http://localhost:5000/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((result) => {
-      console.log(result);
-      result.json().then((resp) => {
-        console.log(resp);
-        localStorage.setItem("id", id + 1);
-        navigate("/userdata");
+  function savedata(e) {
+    // console.log(name, email, password);
+    e.preventDefault();
+
+    if (name === "") {
+      setErrorname("enter your name");
+    } else if (email === "") {
+      setErroremail("enter your email");
+    } else if (password === "") {
+      setErrorpassword("enter your password");
+    } else {
+      const data = { name, email, password };
+
+      // function handlesubmit() {
+      // event.preventDefault();
+      // let temp = localStorage.getItem("id");
+      // let data = { id,name, email, password };
+      // console.log(id ,name,email,password)
+
+      fetch("http://localhost:5000/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((result) => {
+        // console.log(result);
+        result.json().then((resp) => {
+          // console.log(resp);
+          localStorage.setItem("id", id + 1);
+          navigate("/userdata");
+        });
       });
-    });
+    }
   }
 
   return (
     <>
       <h1>ADD USER</h1>
+
       <MDBContainer fluid>
         <MDBRow>
           <MDBCol sm="6">
@@ -64,6 +83,7 @@ function Useradd() {
                 wrapperClass="mb-4 mx-5 w-100"
                 label="Id"
                 disabled
+                required
                 value={id}
                 onChange={(e) => setId(e.target.value)}
                 id="formControlLg"
@@ -74,33 +94,52 @@ function Useradd() {
                 wrapperClass="mb-4 mx-5 w-100"
                 label="Name"
                 value={name}
+                required
                 onChange={(e) => setName(e.target.value)}
                 id="formControlLg"
                 type="text"
                 size="lg"
               />
+              {errorname && (
+                <div style={{ color: "red" }} className="mx-5 my-2">
+                  {errorname}
+                </div>
+              )}
+
               <MDBInput
                 wrapperClass="mb-4 mx-5 w-100"
                 label="Email"
                 value={email}
+                required
                 onChange={(e) => setEmail(e.target.value)}
                 id="formControlLg"
                 type="email"
                 size="lg"
               />
+              {erroremail && (
+                <div style={{ color: "red" }} className="mx-5 my-2">
+                  {erroremail}
+                </div>
+              )}
+
               <MDBInput
                 wrapperClass="mb-4 mx-5 w-100"
                 label="Password"
                 value={password}
+                required
                 onChange={(e) => setPassword(e.target.value)}
                 id="formControlLg"
                 type="password"
                 size="lg"
               />
-
+              {errorpassword && (
+                <div style={{ color: "red" }} className="mx-5 my-2">
+                  {errorpassword}
+                </div>
+              )}
               <MDBBtn
                 className="mb-4 px-5 mx-5 w-100"
-                onClick={handlesubmit}
+                onClick={savedata}
                 color="info"
                 size="lg"
               >
