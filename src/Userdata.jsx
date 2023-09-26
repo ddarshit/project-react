@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Userdata() {
   const [userdata, setUserdata] = useState(null);
-  const navigate = useNavigate(false);
+  const navigate = useNavigate();
 
   const Detail = (id) => {
     navigate("/userdetail/" + id);
@@ -25,7 +25,7 @@ export default function Userdata() {
 
   const Delete = (id) => {
     if (window.confirm("Do you want to remove?")) {
-      fetch("http://localhost:5000/user" + id, {
+      fetch("http://localhost:5000/user/" + id, {
         method: "DELETE",
       })
         .then((res) => {
@@ -35,22 +35,23 @@ export default function Userdata() {
         .catch((err) => {
           console.log(err.message);
         });
-    }} 
+    }
+  };
 
-    useEffect(() => {
-      fetch("http://localhost:5000/user").then((result) => {
-        return result
-          .json()
-          .then((resp) => {
-            console.log(resp);
-            setUserdata(resp);
-          })
-          .catch((error) => {
-            console.log(error.msg);
-          });
-      });
-    }, []);
-  
+  useEffect(() => {
+    fetch("http://localhost:5000/user").then((result) => {
+      return result
+        .json()
+        .then((resp) => {
+          console.log(resp);
+          setUserdata(resp);
+        })
+        .catch((error) => {
+          console.log(error.msg);
+        });
+    });
+  }, []);
+
   return (
     <>
       <h1>User data</h1>
