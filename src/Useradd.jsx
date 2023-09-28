@@ -15,22 +15,29 @@ function Useradd() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [errorname, setErrorname] = useState("");
-  const [erroremail, setErroremail] = useState("");
-  const [errorpassword, setErrorpassword] = useState("");
+  // const [errorname, setErrorname] = useState("");
+  // const [erroremail, setErroremail] = useState("");
+  // const [errorpassword, setErrorpassword] = useState("");
 
   function savedata(e) {
     // console.log(name, email, password);
-    e.preventDefault();
+     const data = { name, email, password };
 
-    if (name === "") {
-      setErrorname("enter your name");
-    } else if (email === "") {
-      setErroremail("enter your email");
-    } else if (password === "") {
-      setErrorpassword("enter your password");
-    } else {
-      const data = { name, email, password };
+    e.preventDefault();
+    if (name === "" || email === "" || password === ""){
+      alert("please fill the input")
+    }
+
+    // if (name === "") {
+    //   setErrorname("enter your name");
+    // } else if (email === "") {
+    //   setErroremail("enter your email");
+    // } else if (password === "") {
+    //   setErrorpassword("enter your password");
+    // } 
+  else {
+      
+      // const data = { name, email, password };
 
       // function handlesubmit() {
       // event.preventDefault();
@@ -57,6 +64,7 @@ function Useradd() {
 
   return (
     <>
+    
       <h1>ADD USER</h1>
 
       <MDBContainer fluid>
@@ -100,11 +108,11 @@ function Useradd() {
                 type="text"
                 size="lg"
               />
-              {errorname && (
+              {/* {errorname && (
                 <div style={{ color: "red" }} className="mx-5 my-2">
                   {errorname}
                 </div>
-              )}
+              )} */}
 
               <MDBInput
                 wrapperClass="mb-4 mx-5 w-100"
@@ -116,11 +124,11 @@ function Useradd() {
                 type="email"
                 size="lg"
               />
-              {erroremail && (
+              {/* {erroremail && (
                 <div style={{ color: "red" }} className="mx-5 my-2">
                   {erroremail}
                 </div>
-              )}
+              )} */}
 
               <MDBInput
                 wrapperClass="mb-4 mx-5 w-100"
@@ -132,11 +140,11 @@ function Useradd() {
                 type="password"
                 size="lg"
               />
-              {errorpassword && (
+              {/* {errorpassword && (
                 <div style={{ color: "red" }} className="mx-5 my-2">
                   {errorpassword}
                 </div>
-              )}
+              )} */}
               <MDBBtn
                 className="mb-4 px-5 mx-5 w-100"
                 onClick={savedata}
