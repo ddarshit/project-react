@@ -27,8 +27,7 @@ function Login() {
 
   const login = () => {
     // let data = {name , password , email}
-    fetch("http://localhost:5000/user?name=" + user).then((result) => {
-      console.log(result);
+    fetch(`http://localhost:5000/user?name=${user}&password=${password}`).then((result) => {
       result.json().then((resp) => {
         console.log(resp);
         //   navigate("/userdata");
@@ -39,7 +38,7 @@ function Login() {
             navigate('/admin')
           }
           else {
-            navigate("/")
+            navigate("/home")
           }
         }else {
           alert("invalid uaser")
