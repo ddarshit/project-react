@@ -52,7 +52,7 @@ const Useredit = () => {
     } else {
       const data = { id, name, email, password };
 
-      fetch("http://localhost:5000/user" + userid, {
+      fetch("http://localhost:5000/user/" + userid, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -156,7 +156,7 @@ const Useredit = () => {
                 color="info"
                 size="lg"
               >
-                Add User
+                Edit
               </MDBBtn>
               {/* <p className="small mb-5 pb-lg-3 ms-5"><a class="text-muted" href="#!">Forgot password?</a></p> */}
               {/* <p className='ms-5'>Don't have an account? <a href="#!" class="link-info">Register here</a></p> */}

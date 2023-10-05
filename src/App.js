@@ -11,6 +11,7 @@ import Useredit from "./Useredit";
 import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
+import Admin from "./Admin";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
           <Route path='/home' element={<Home/>} />
+          <Route path='/admin' element={<Admin/>} />
           </Route>
         </Routes>
 
