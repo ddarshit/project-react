@@ -2,11 +2,17 @@ import React from 'react';
 import App from './App';
 import ReactDOM from 'react-dom/client';
 // import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import Store from './Store';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={Store}>
     <App />
+    </Provider>
   </React.StrictMode>
 );
 
