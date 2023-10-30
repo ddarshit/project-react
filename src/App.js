@@ -11,8 +11,9 @@ import Useredit from "./Useredit";
 import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
+import About from "./About";
 import Admin from "./Admin";
-
+import Contact from "./Contact";
 function App() {
   return (
     <>
@@ -27,7 +28,9 @@ function App() {
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
           <Route path='/home' element={<Home/>} />
+          <Route path='/about' element={<About/>} />
           <Route path='/admin' element={<Admin/>} />
+          <Route path='/contact' element={<Contact/>} />
           </Route>
         </Routes>
 
