@@ -32,6 +32,12 @@ export default function Navbar() {
               <MDBNavbarLink active aria-current="page">
                 <Link to="home">Home</Link>
               </MDBNavbarLink>
+              <MDBNavbarLink active aria-current="page">
+                <Link to="about">About</Link>
+              </MDBNavbarLink>
+              <MDBNavbarLink active aria-current="page">
+                <Link to="contact">Contact</Link>
+              </MDBNavbarLink>
               <MDBNavbarLink>
                 <Link to="login">Login</Link>
               </MDBNavbarLink>
